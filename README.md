@@ -54,8 +54,12 @@ pod 'GCXSteppedSlider'
 }
 ```
 
+## Documentation
+
+* [GCXSteppedSlider.h](https://github.com/grandcentrix/GCXSteppedSlider/blob/master/GCXSteppedSlider/Classes/GCXSteppedSlider.h)
+
 ## Maintainer
 
-- [tjosten](https://github.com/tjosten/)
+* [tjosten](https://github.com/tjosten/)
 
-Please file [Issues](https://github.com/grandcentrix/GCXSteppedSlider/issues/) and do not contact me directly. Thank you!
+Please file [Issues](https://github.com/grandcentrix/GCXSteppedSlider/issues/) and do not contact maintainers directly. Thank you!
