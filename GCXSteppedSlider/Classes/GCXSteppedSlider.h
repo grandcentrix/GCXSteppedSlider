@@ -13,7 +13,7 @@
 
 @optional
 /**
- * Shoukd be implemeneted by the delegate if it wants to be notified about value changes of the slider
+ * Should be implemeneted by the delegate if it wants to be notified about value changes of the slider
  *
  * @param (GCXSteppedSlider*) slider instance
  * @param (id) selected value
