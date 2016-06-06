@@ -1,0 +1,6 @@
+framework module Pods_GCXSteppedSlider_Example {
+  umbrella header "Pods-GCXSteppedSlider_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

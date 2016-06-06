@@ -1,0 +1,1 @@
+../../../../../GCXSteppedSlider/Classes/GCXSteppedSlider.h

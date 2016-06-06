@@ -1,0 +1,5 @@
+use_frameworks!
+
+target 'GCXSteppedSlider_Example' do
+  pod 'GCXSteppedSlider', :path => '../'
+end

@@ -1,0 +1,14 @@
+PODS:
+  - GCXSteppedSlider (0.1.0)
+
+DEPENDENCIES:
+  - GCXSteppedSlider (from `../`)
+
+EXTERNAL SOURCES:
+  GCXSteppedSlider:
+    :path: ../
+
+SPEC CHECKSUMS:
+  GCXSteppedSlider: 977513de8f19295d0f8376e0af73608a8a51c394
+
+COCOAPODS: 0.39.0

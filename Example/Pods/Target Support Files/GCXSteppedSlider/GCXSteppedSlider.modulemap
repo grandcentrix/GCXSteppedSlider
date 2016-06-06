@@ -1,0 +1,6 @@
+framework module GCXSteppedSlider {
+  umbrella header "GCXSteppedSlider-umbrella.h"
+
+  export *
+  module * { export * }
+}
