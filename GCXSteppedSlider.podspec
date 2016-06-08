@@ -4,10 +4,10 @@ Pod::Spec.new do |s|
   s.summary          = 'A custom UISlider implementation with tappable intermediate steps.'
 
   s.description      = <<-DESC
-A custom UISlider implementation with tappable intermediate steps.
+A custom, fully configurable UISlider implementation with tappable intermediate steps.
                        DESC
 
-  s.homepage         = 'https://github.com/grandcentrix/GCXSteppedSlider.git'
+  s.homepage         = 'https://github.com/grandcentrix/GCXSteppedSlider'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Timo Josten' => 'timo.josten@grandcentrix.net' }
   s.source           = { :git => 'https://github.com/grandcentrix/GCXSteppedSlider.git', :tag => s.version.to_s }
