@@ -7,6 +7,7 @@
 
 #import "GCXSteppedSlider.h"
 #import <Masonry/Masonry.h>
+#import <Masonry/NSLayoutConstraint+MASDebugAdditions.h>
 
 @implementation GCXSteppedSliderImageView
 @end
@@ -60,10 +61,12 @@ static CGFloat const GCXSteppedSliderStepLabelDefaultTopMargin = 15.0;
             GCXSteppedSliderImageView* stepImageView = [[GCXSteppedSliderImageView alloc] initWithImage:nil];
             stepImageView.contentMode = UIViewContentModeScaleAspectFit;
             stepImageView.clipsToBounds = YES;
+            stepImageView.mas_key = [NSString stringWithFormat:@"StepImageView %lu", i];
 
             UIView* containerView = [[UIView alloc] initWithFrame:CGRectZero];
             containerView.userInteractionEnabled = NO;
             containerView.clipsToBounds = YES;
+            containerView.mas_key = [NSString stringWithFormat:@"ContainerView for StepImageView %lu", i];
             [containerView addSubview:stepImageView];
 
             [self addSubview:containerView];
@@ -83,6 +86,7 @@ static CGFloat const GCXSteppedSliderStepLabelDefaultTopMargin = 15.0;
         [self addSubview:trackView];
         [self sendSubviewToBack:trackView];
         self.trackView = trackView;
+        self.trackView.mas_key = @"TrackView";
 
         [self addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
 
@@ -184,8 +188,6 @@ static CGFloat const GCXSteppedSliderStepLabelDefaultTopMargin = 15.0;
 }
 
 - (void)updateConstraints {
-    [super updateConstraints];
-
     CGRect trackRect = [self trackRectForBounds:self.bounds];
     CGRect thumbRect = [self thumbRectForBounds:self.bounds trackRect:trackRect value:0];
     CGSize thumbSize = thumbRect.size;
@@ -195,12 +197,12 @@ static CGFloat const GCXSteppedSliderStepLabelDefaultTopMargin = 15.0;
     GCXSteppedSliderImageView* lastStepImageView = self.stepImageViews.lastObject;
     [firstSpacerView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.greaterThanOrEqualTo(@(1));
-        make.left.equalTo(firstStepImageView.superview.mas_right).priority(1000);
+        make.left.equalTo(firstStepImageView.superview.mas_right).with.priority(1000);
     }];
 
     UIView* lastSpacerView = self.stepImageSpacerViews.lastObject;
     [lastSpacerView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(lastStepImageView.superview.mas_left).priority(1000);
+        make.right.equalTo(lastStepImageView.superview.mas_left).with.priority(1000);
     }];
 
     for (UIView* spacerView in self.stepImageSpacerViews) {
@@ -239,8 +241,8 @@ static CGFloat const GCXSteppedSliderStepLabelDefaultTopMargin = 15.0;
             } else {
                 UIView* leftSpacerView = [self.stepImageSpacerViews objectAtIndex:index - 1];
                 UIView* rightSpacerView = [self.stepImageSpacerViews objectAtIndex:index];
-                make.left.lessThanOrEqualTo(leftSpacerView.mas_right).priority(999);
-                make.right.lessThanOrEqualTo(rightSpacerView.mas_left).priority(999);
+                make.left.lessThanOrEqualTo(leftSpacerView.mas_right).with.priority(999);
+                make.right.lessThanOrEqualTo(rightSpacerView.mas_left).with.priority(999);
             }
 
             make.centerY.equalTo(self.mas_centerY);
@@ -270,10 +272,12 @@ static CGFloat const GCXSteppedSliderStepLabelDefaultTopMargin = 15.0;
 
     [self.trackView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@(2.0));
-        make.left.equalTo(firstStepImageView.superview.mas_centerX);
-        make.right.equalTo(lastStepImageView.superview.mas_centerX);
+        make.left.equalTo(firstStepImageView.superview.mas_centerX).with.priorityLow();
+        make.right.equalTo(lastStepImageView.superview.mas_centerX).with.priorityLow();
         make.centerY.equalTo(firstSpacerView.superview.mas_centerY);
     }];
+
+    [super updateConstraints];
 }
 
 - (void)trackTapped:(UITapGestureRecognizer*)gestureRecognizer {

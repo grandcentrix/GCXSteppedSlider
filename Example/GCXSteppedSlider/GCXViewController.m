@@ -55,8 +55,6 @@
 }
 
 - (void)updateViewConstraints {
-    [super updateViewConstraints];
-
     [self.slider mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view.mas_left).offset(10);
         make.right.equalTo(self.view.mas_right).offset(-10);
@@ -64,6 +62,7 @@
         make.height.equalTo(@(75));
     }];
 
+    [super updateViewConstraints];
 }
 
 # pragma mark Demo
