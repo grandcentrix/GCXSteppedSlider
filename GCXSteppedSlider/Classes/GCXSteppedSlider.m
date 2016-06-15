@@ -169,6 +169,10 @@ static CGFloat const GCXSteppedSliderStepLabelDefaultTopMargin = 15.0;
                     label.numberOfLines = 1;
                     label.lineBreakMode = NSLineBreakByTruncatingTail;
                     label.textAlignment = NSTextAlignmentCenter;
+
+                    if ([self.delegate respondsToSelector:@selector(steppedSlider:label:forValue:)]) {
+                        [self.delegate steppedSlider:self label:&label forValue:value];
+                    }
                 }
 
                 label.text = labelString;

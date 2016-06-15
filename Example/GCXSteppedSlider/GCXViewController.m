@@ -77,6 +77,10 @@
 
 # pragma mark <GCXSteppedSliderDelegate>
 
+- (void)steppedSlider:(GCXSteppedSlider *)slider label:(UILabel *__autoreleasing *)label forValue:(id)stepValue {
+    [*label setTextColor:[UIColor redColor]];
+}
+
 - (NSString*)steppedSlider:(GCXSteppedSlider *)slider labelStringForValue:(id)stepValue {
     return [NSString stringWithFormat:@"No. %lu", [self.values indexOfObject:stepValue]];
 }
