@@ -85,7 +85,9 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-GCXSteppedSlider_Example/GCXSteppedSlider.framework"
+  install_framework "Pods-GCXSteppedSlider_Example/Masonry.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-GCXSteppedSlider_Example/GCXSteppedSlider.framework"
+  install_framework "Pods-GCXSteppedSlider_Example/Masonry.framework"
 fi

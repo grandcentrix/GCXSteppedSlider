@@ -15,4 +15,6 @@ A custom UISlider implementation with tappable intermediate steps.
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'GCXSteppedSlider/Classes/**/*'
+
+  s.dependency  'Masonry'
 end

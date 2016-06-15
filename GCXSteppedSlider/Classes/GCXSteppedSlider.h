@@ -20,6 +20,16 @@
  */
 - (void)steppedSlider:(GCXSteppedSlider* __nonnull)slider valueChanged:(id __nullable)selectedValue;
 
+@optional
+/**
+ * Should be implemeneted by the delegate if it wants to display labels below the stepImages of the slider
+ *
+ * @return (NSString*) text for label below the stepImage at stepValue
+ * @param (GCXSteppedSlider*) slider instance
+ * @param (id) stepValue which label text needs to be returned
+ */
+- (NSString* __nullable)steppedSlider:(GCXSteppedSlider* __nonnull)slider labelStringForValue:(id __nullable)stepValue;
+
 @required
 /**
  * Must be implemeneted by the delegate and return the UIImage for the stepImage of the given stepValue

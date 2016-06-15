@@ -1,5 +1,7 @@
 PODS:
-  - GCXSteppedSlider (0.1.0)
+  - GCXSteppedSlider (0.1.0):
+    - Masonry
+  - Masonry (1.0.1)
 
 DEPENDENCIES:
   - GCXSteppedSlider (from `../`)
@@ -9,6 +11,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  GCXSteppedSlider: 977513de8f19295d0f8376e0af73608a8a51c394
+  GCXSteppedSlider: 953c8d9814dbf541a414f1dedf06e1cbd5ffb5eb
+  Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
 
 COCOAPODS: 0.39.0
