@@ -46,6 +46,8 @@ static CGFloat const GCXSteppedSliderStepLabelDefaultTopMargin = 15.0;
         self.minimumValue = 0;
         self.maximumTrackTintColor = [UIColor clearColor];
         self.minimumTrackTintColor = [UIColor clearColor];
+        [self setMinimumTrackImage:[UIImage alloc] forState:UIControlStateNormal];
+        [self setMaximumTrackImage:[UIImage alloc] forState:UIControlStateNormal];
         self.thumbTintColor = self.tintColor;
         self.continuous = YES;
 
@@ -105,6 +107,7 @@ static CGFloat const GCXSteppedSliderStepLabelDefaultTopMargin = 15.0;
 
 - (void)setTintColor:(UIColor *)tintColor {
     [super setTintColor:tintColor];
+    [self setThumbImage:[self thumbImageForState:UIControlStateNormal] forState:UIControlStateNormal]; // iOS 8 workaround for setting the tumbTintColor
     self.thumbTintColor = tintColor;
 }
 
@@ -239,9 +242,9 @@ static CGFloat const GCXSteppedSliderStepLabelDefaultTopMargin = 15.0;
             }];
 
             if (index == 0) {
-                make.left.equalTo(self.mas_left);//.offset(thumbSize.width/2);
+                make.left.equalTo(self.mas_left).offset(-2);
             } else if (index == self.stepImageViews.count - 1) {
-                make.right.equalTo(self.mas_right);//.offset(-(thumbSize.width / 4));
+                make.right.equalTo(self.mas_right).offset(2);
             } else {
                 UIView* leftSpacerView = [self.stepImageSpacerViews objectAtIndex:index - 1];
                 UIView* rightSpacerView = [self.stepImageSpacerViews objectAtIndex:index];
