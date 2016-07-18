@@ -8,6 +8,7 @@
 
 #import "GCXViewController.h"
 #import <GCXSteppedSlider/GCXSteppedSlider.h>
+#import <Masonry/Masonry.h>
 
 @interface GCXViewController () <GCXSteppedSliderDelegate>
 
@@ -22,11 +23,10 @@
 {
     [super viewDidLoad];
     
-    self.values = @[@"First", @"Second", @(3), @(4), @(5), @(6)];
+    self.values = @[@"First", @"Second", @(3)];
 
-    CGRect rect = [self sliderFrame];
-    GCXSteppedSlider* slider = [[GCXSteppedSlider alloc] initWithFrame:rect stepValues:self.values initialStep:self.values[1]];
-    slider.disabledStepValues = @[self.values[2]];
+    GCXSteppedSlider* slider = [[GCXSteppedSlider alloc] initWithFrame:CGRectZero stepValues:self.values initialStep:self.values[1]];
+    //slider.disabledStepValues = @[self.values[2]];
     slider.delegate = self;
     slider.tintColor = [UIColor redColor];
     slider.signatureColor = [UIColor grayColor];
@@ -54,10 +54,15 @@
     }
 }
 
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-    self.slider.frame = [self sliderFrame];
-    self.slider.center = CGPointMake(self.view.center.x, self.view.center.y - 50.0);
+- (void)updateViewConstraints {
+    [self.slider mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left).offset(10);
+        make.right.equalTo(self.view.mas_right).offset(-10);
+        make.top.equalTo(self.view.mas_top).offset(25);
+        make.height.equalTo(@(75));
+    }];
+
+    [super updateViewConstraints];
 }
 
 # pragma mark Demo
@@ -70,13 +75,15 @@
     [self.slider setValue:3 animated:NO];
 }
 
-# pragma mark Helpers
+# pragma mark <GCXSteppedSliderDelegate>
 
-- (CGRect)sliderFrame {
-    return CGRectMake(0.0, 0.0, self.view.frame.size.width / 1.25, 25.0);
+- (void)steppedSlider:(GCXSteppedSlider *)slider label:(UILabel *__autoreleasing *)label forValue:(id)stepValue {
+    [*label setTextColor:[UIColor redColor]];
 }
 
-# pragma mark <GCXSteppedSliderDelegate>
+- (NSString*)steppedSlider:(GCXSteppedSlider *)slider labelStringForValue:(id)stepValue {
+    return [NSString stringWithFormat:@"No. %lu", [self.values indexOfObject:stepValue]];
+}
 
 - (UIImage*)steppedSlider:(GCXSteppedSlider *)slider stepImageForValue:(id)stepValue {
     return [UIImage imageNamed:@"example"];
@@ -87,10 +94,10 @@
 }
 
 - (CGSize)steppedSlider:(GCXSteppedSlider *)slider sizeForStepImageOfValue:(id)stepValue {
-    if ([slider.disabledStepValues indexOfObject:stepValue] != NSNotFound) {
+    if (slider.disabledStepValues && [slider.disabledStepValues indexOfObject:stepValue] != NSNotFound) {
         return CGSizeMake(10.0, 10.0);
     } else if ([stepValue isEqual:self.values.firstObject]) {
-        return CGSizeMake(25.0, 25.0);
+        return CGSizeMake(10.0, 10.0);
     } else if ([stepValue isEqual:self.values.lastObject]) {
         return CGSizeMake(25.0, 25.0);
     }

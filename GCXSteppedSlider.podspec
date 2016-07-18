@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'GCXSteppedSlider'
-  s.version          = '0.1.0'
+  s.version          = '0.2.0'
   s.summary          = 'A custom UISlider implementation with tappable intermediate steps.'
 
   s.description      = <<-DESC
@@ -15,4 +15,6 @@ A custom UISlider implementation with tappable intermediate steps.
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'GCXSteppedSlider/Classes/**/*'
+
+  s.dependency  'Masonry'
 end
