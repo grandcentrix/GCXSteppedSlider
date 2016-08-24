@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'GCXSteppedSlider'
-  s.version          = '0.2.0'
+  s.version          = '0.3.0'
   s.summary          = 'A custom UISlider implementation with tappable intermediate steps.'
 
   s.description      = <<-DESC
