@@ -169,8 +169,8 @@ static CGFloat const GCXSteppedSliderStepLabelDefaultTopMargin = 15.0;
                     label = [[UILabel alloc] initWithFrame:CGRectZero];
                     self.stepLabelViews[labelIndex] = label;
 
-                    label.numberOfLines = 1;
-                    label.lineBreakMode = NSLineBreakByTruncatingTail;
+                    label.numberOfLines = 0;
+                    label.lineBreakMode = NSLineBreakByWordWrapping;
                     label.textAlignment = NSTextAlignmentCenter;
 
                     if ([self.delegate respondsToSelector:@selector(steppedSlider:label:forValue:)]) {
@@ -271,6 +271,9 @@ static CGFloat const GCXSteppedSliderStepLabelDefaultTopMargin = 15.0;
                     } else {
                         make.centerX.equalTo(stepImageView.superview.mas_centerX);
                     }
+
+
+
                     make.bottom.equalTo(self.mas_bottom);
                 }];
             }

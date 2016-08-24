@@ -59,7 +59,7 @@
         make.left.equalTo(self.view.mas_left).offset(10);
         make.right.equalTo(self.view.mas_right).offset(-10);
         make.top.equalTo(self.view.mas_top).offset(25);
-        make.height.equalTo(@(75));
+        make.height.equalTo(@(200));
     }];
 
     [super updateViewConstraints];
@@ -82,7 +82,7 @@
 }
 
 - (NSString*)steppedSlider:(GCXSteppedSlider *)slider labelStringForValue:(id)stepValue {
-    return [NSString stringWithFormat:@"No. %lu", [self.values indexOfObject:stepValue]];
+    return [NSString stringWithFormat:@"No. %lu with a very long label", [self.values indexOfObject:stepValue]];
 }
 
 - (UIImage*)steppedSlider:(GCXSteppedSlider *)slider stepImageForValue:(id)stepValue {
