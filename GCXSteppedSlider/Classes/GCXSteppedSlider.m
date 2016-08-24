@@ -271,7 +271,7 @@ static CGFloat const GCXSteppedSliderStepLabelDefaultTopMargin = 15.0;
                     } else {
                         make.centerX.equalTo(stepImageView.superview.mas_centerX);
                     }
-                    make.bottom.equalTo(self.mas_bottom);
+                    make.top.equalTo(self.trackView.mas_bottom).offset(25);
                 }];
             }
         }];

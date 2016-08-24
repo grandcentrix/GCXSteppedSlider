@@ -82,7 +82,7 @@
 }
 
 - (NSString*)steppedSlider:(GCXSteppedSlider *)slider labelStringForValue:(id)stepValue {
-    return [NSString stringWithFormat:@"No. %lu with a very long label", [self.values indexOfObject:stepValue]];
+    return [NSString stringWithFormat:@"No. %lu", [self.values indexOfObject:stepValue]];
 }
 
 - (UIImage*)steppedSlider:(GCXSteppedSlider *)slider stepImageForValue:(id)stepValue {
